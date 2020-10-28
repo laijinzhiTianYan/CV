@@ -1,0 +1,81 @@
+private static List<Integer> spiralOrder(int[][] matrix) {
+        LinkedList<Integer> result = new LinkedList<>();
+        if(matrix==null||matrix.length==0) return result;
+        int left = 0;
+        int right = matrix[0].length - 1;
+        int top = 0;
+        int bottom = matrix.length - 1;
+        int numEle = matrix.length * matrix[0].length;
+        while (numEle >= 1) {
+            for (int i = left; i <= right && numEle >= 1; i++) {
+                result.add(matrix[top][i]);
+                numEle--;
+            }
+            top++;
+            for (int i = top; i <= bottom && numEle >= 1; i++) {
+                result.add(matrix[i][right]);
+                numEle--;
+            }
+            right--;
+            for (int i = right; i >= left && numEle >= 1; i--) {
+                result.add(matrix[bottom][i]);
+                numEle--;
+            }
+            bottom--;
+            for (int i = bottom; i >= top && numEle >= 1; i--) {
+                result.add(matrix[i][left]);
+                numEle--;
+            }
+            left++;
+        }
+        return result;
+    }
+
+
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        // 特判
+        if (matrix.length == 0){
+            return new ArrayList<>();
+        }
+
+        // 初始化
+        int l = 0;
+        int r = matrix[0].length - 1;
+        int t = 0;
+        int b = matrix.length - 1;
+        
+        // 结果集
+        ArrayList<Integer> list = new ArrayList<>();
+
+        while (true){
+            // left to right
+            for (int i = l; i <= r ; i++) {
+                list.add(matrix[t][i]);
+            }
+            // ++t ：先给t加1，然后用t的新值
+            // t++ : 先用t的原值，然后t加1；
+            if(++t > b) break;
+
+            // top to bottom
+            for (int i = t; i <= b ; i++) {
+                list.add(matrix[i][r]);
+            }
+            if(l > --r) break;
+
+            // right to left
+            for (int i = r; i >= l ; i--) {
+                list.add(matrix[b][i]);
+            }
+            if(t > --b) break;
+
+            // bottom to top
+            for (int i = b; i >= t ; i--) {
+                list.add(matrix[i][l]);
+            }
+            if(++l > r) break;
+        }
+        
+        return list;
+    }
+}
