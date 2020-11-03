@@ -5,7 +5,7 @@ importjava.util.LinkedList;
 
 importjava.util.Queue;
 
- 
+ ![](images/2020-11-03-10-30-12.png)
 
 public classMyQueue<T> {
     private Queue<T> storage = newLinkedList<T>();
