@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <style>
+        body {
+            height: 100vh;
+        }
+        body,
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        div {
+            width: 100%;
+            height: 0;
+            padding-bottom: 50%;
+            position: relative;
+            background: #ddd;
+        }
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p class="text">
+            这里是文本信息
+        </p>
+    </div>
+</body>
+</html>
