@@ -168,6 +168,14 @@ BFC: block format context - 块级格式化上下文，每一个盒子当中都�
 1. 同一个 BFC 下垂直方向外边距会发生折叠。如果想要避免外边距的重叠，可以将其放在不同的 BFC 容器中。
 2. BFC 可以包含浮动的元素（清除浮动）
 3. BFC 可以阻止元素被浮动元素覆盖
+**BFC的约束规则**
+1. 内部的Box会在垂直方向上一个接一个的放置
+2. 垂直方向上的距离由margin决定。（完整的说法是：属于同一个BFC的两个相邻Box的margin会发生重叠（塌陷），与方向无关。）
+3. 每个元素的左外边距与包含块的左边界相接触（从左向右），即使浮动元素也是如此。（这说明BFC中子元素不会超出他的包含块，而position为absolute的元素可以超出他的包含块边界）
+4. BFC的区域不会与float的元素区域重叠
+5. 计算BFC的高度时，浮动子元素也参与计算
+6. BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面元素，反之亦然
+
 
 **只要元素满足下面任一条件即可触发 BFC 特性：**
 body 根元素,意思应该是根元素所围起来的这个封闭空间是一个BFC。
@@ -193,5 +201,39 @@ overflow 除了 visible 以外的值 (hidden、auto、scroll)
   - 绝对定位 (absolute positioning)
   在绝对定位布局中，元素会整体脱离普通流，因此绝对定位元素不会对其兄弟元素造成影响，而元素具体的位置由绝对定位的坐标决定。
 
-
+- 水平以及垂直居中
+  - 弹出层的定位 绝对垂直居中
+    ```
+    .md-warp{
+      position: relative;
+    }
+    .md-main{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+    }
+    ```
+  - flex实现
+    ```
+    .md-warp{
+        display:flex;
+    }
+    .md-main{
+        display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    ```
+  - margin法：元素定宽，元素为块级元素或行内元素设置display:block，元素的margin-left和margin-right都必须设置为auto。
+    ```
+    水平居中
+    .md-main{
+      width:100px;
+      display:block;
+      margin:0 auto;
+    }
+    ```
 

@@ -6,7 +6,7 @@ arr.unshift();
 arr.shift();
 arr.reverse();
 arr.slice();
-arr.sort();
+arr.sort();// 从小到大排序：arr.sort((a,b)=>{return a-b;}); 从大到小排序：arr.sort((a,b)=>{return b-a;});
 arr.fill();//用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。不包括终止索引。
 arr.copyWithin();//用于从数组的指定位置拷贝元素到数组的另一个指定位置中
   - arr.copyWithin(target, start, end)

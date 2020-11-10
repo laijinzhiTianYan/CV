@@ -4,6 +4,13 @@
 ## 二级标题
 依次类推
 
+还有一种方式如下：字体只分为两级。"="或"-"的数量最好是三个以上，但是有些版本可以为一个，通常的习惯为与字体等长
+
+Markdown
+===
+markdown
+---
+
 二、链接
 [链接名](链接地址)
 [name](url "title")
@@ -68,6 +75,10 @@ name 链接失效时显示的名称
 url 图片的链接
 title 鼠标悬停时提示的内容 可以省略
 
+如果要修改图片大小，可以使用HTML的处理方式来插入图片，并设置固定大小
+<img src="https://raw.githubusercontent.com/linux-downey/bloc_test/master/picture/Makedown/Makedown.png" width=100 height=60 />
+同时，也可以按照比例来设置图片大小
+<img src="https://raw.githubusercontent.com/linux-downey/bloc_test/master/picture/Makedown/Makedown.png" width="%50" height="%50" />
 七、画表格
 
 表格标题：
@@ -100,10 +111,40 @@ title 鼠标悬停时提示的内容 可以省略
 自己看
 
 九、分割线
+
 ---
+
 ***
+换行可以使用一个或者多个<u>空行</u>来另起一个段落
 
 十、空格缩进
 &ensp; 一个空格
 &emsp; 两个空格
 &nbsp; 一个空格不会触发换行
+
+十一、插入文本引用
+将一段文本与正文文本相区分，比如示例，引用文章之类的，怎么做呢？
+答案是先换行(隔一个或者多个空行)，然后新行以tab键开头，键入文本：
+正文
+    
+      引用文本示例（这里是用了两个tab）
+
+十二、设置跳转
+在写文档时，经常会需要在某段文本上设置链接，跳转到另一段文本中。
+在需要跳转的文本处添加：[跳转到末尾](#jump1) 
+在跳转目的地添加： <span id="jump1">测试跳转的文本</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
