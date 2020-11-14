@@ -22,7 +22,7 @@
      WebWorker：顶层对象是self
      以上三者：通用顶层对象是globalThis
 
-   - 数值扩展:BigInt：任何位数的整数(新增的数据类型，使用n结尾)
+   - 数值扩展:BigInt：任何位数的整数(新增的数据类型，使用n结尾) BigInt(3)=>3n
        >BigInt()：转换普通数值为BigInt类型
        BigInt.asUintN()：转换BigInt为0到2n-1之间对应的值
        BigInt.asIntN()：转换BigInt为-2n-1 到2n-1-1
