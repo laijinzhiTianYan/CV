@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script type="text/javascript">
+        var throttle=function(handle,delay){
+        var timer=null;
+        console.log(timer);
+        return function(){
+            var _this=this;
+            var args=arguments;
+            if(!timer){
+                timer=setTimeout(function(){
+                    handle.apply(_this,args);
+                    console.log(timer);
+                    timer=null;
+                },delay);
+            }
+        }
+    }
+
+    function handle(){
+        console.log('111');
+    }
+
+    window.addEventListener('scroll',throttle(handle,5000));
+
+    </script>
+</head>
+<body>
+    <div style="height:800px;width:400px;">
+
+    </div>
+    <div style="height:800px;width:400px;">
+
+    </div>
+    <div style="height:800px;width:400px;">
+
+    </div>
+</body>
+</html>

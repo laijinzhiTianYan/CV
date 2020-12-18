@@ -242,7 +242,8 @@
       let arrResult=[];
       arr.forEach(item=>{
           if(Array.isArray(item)){
-              arrResult=arrResult.concat(arguments.callee(item));
+              arrResult=arrResult.concat(flat(item));
+              //arrResult=arrResult.concat(arguments.callee(item));
               //或者用扩展运算符
               //arrResult.push(...arguments.callee(item));
           }
@@ -359,7 +360,7 @@
       for (var i = 0, len = array.length; i < len; i++) {
           var current = array[i];
           if (res.indexOf(current) === -1) {
-              res.push(current)
+              res.push(current);
           }
       }
       return res;
