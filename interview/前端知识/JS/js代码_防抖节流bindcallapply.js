@@ -32,18 +32,30 @@ function ajax(e) {
     console.log(e); // 事件对象
 }
 
-//封装成为一个方法 
+//防抖，封装成为一个方法 
 function debounce(handle, delay) {
 	var timer = null;
 	return function() {
 		var _this = this,
-		    _arg = arguments;
-		clearTimeout(timer);
+            _arg = arguments;
+        if(timer){
+            clearTimeout(timer);
+        }
 		timer = setTimeout(function() {
 			handle.apply(_this, _arg);
 		}, delay);
 	}
 } // 其中 handle 为需要进行防抖操作的函数，delay 为延迟时间
+
+function throttle(handle,wait){
+    let lasttime=0;
+    return function(e){
+        let 
+    }
+}
+
+
+
 
 //节流，窗口调整，页面滚动，抢购疯狂点击等等。
 let isClick=false
@@ -56,15 +68,62 @@ button.on('click',()=>{
     },10000)
 })
 
+// 节流的函数封装
+// 时间戳
 function throttle(handle, wait) {
-	var lasttime = 0;
-	return function(e) {
-		var nowtime = new Date().getTime();
-		if(nowtime - lasttime > wait) {
-			handle.apply(this, arguments);
-			lasttime = nowtime;
+	var prev=Date.now();
+	return function() {
+        var _this=this;
+        var args=arguments;
+		var nowtime = Date.now();
+		if(now- prev >= wait) {
+			handle.apply(_this, args);
+			prev = Data.now();
 		}
 	}
+}
+
+// 定时器
+/**
+ * 当触发事件的时候，我们设置一个定时器，再次触发事件的时候，如果定时器存在，就不执行，直到delay时间后，定时器执行执行函数，
+ * 并且清空定时器，这样就可以设置下个定时器。当第一次触发事件时，不会立即执行函数，而是在delay秒后才执行。
+ * 而后再怎么频繁触发事件，也都是每delay时间才执行一次。当最后一次停止触发后，
+ * 由于定时器的delay延迟，可能还会执行一次函数
+ * @param {*} handle 
+ * @param {*} delay 
+ */
+var throttle=function(handle,delay){
+    var timer=null;
+    return function(){
+        var _this=this;
+        var args=arguments;
+        if(!timer){
+            timer=setTimeout(function(){
+                handle.apply(_this,args);
+                timer=null;
+            },delay);
+        }
+    }
+}
+
+// 节流：时间戳加定时器
+var throttle=function(handle,delay){
+    var timer=null;
+    var startTime=Date.now();
+    return function(){
+        var curTime=Date.now();
+        var remaining=delay-(curTime-startTime);
+        var context=this;
+        var args=arguments;
+        clearTimeout(timer);
+        if(remaining<=0){
+            handle.apply(context,args);
+            startTime=Date.now();
+        }
+        else{
+            timer=setTimeout(handle,remaining);
+        }
+    }
 }
 
 //格式化金钱，每千分位加逗号
@@ -204,3 +263,4 @@ Function.prototype.apply = function(context, args) {
     delete context[key]
     return result
 }
+

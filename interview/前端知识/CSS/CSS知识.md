@@ -236,4 +236,35 @@ overflow 除了 visible 以外的值 (hidden、auto、scroll)
       margin:0 auto;
     }
     ```
+- **如何理解getComputedStyle**
+  - getComputedStyle会获取当前元素所有最终使用的CSS属性值，window.getComputedStyle等价于document.defaultView.getComputedStyle
+  - window.getComputedStyle(elem, null).getPropertyValue("height")可能的值为100px，而且，就算是css上写的是inherit，getComputedStyle也会把它最终计算出来的。不过注意，如果元素的背景色透明，那么getComputedStyle获取出来的就是透明的这个背景（因为透明本身也是有效的），而不会是父节点的背景。所以它不一定是最终显示的颜色。
+  - getComputedStyle会引起回流，因为它需要获取祖先节点的一些信息进行计算（譬如宽高等），所以用的时候慎用，回流会引起性能问题。其它会引发回流的操作，如offsetXXX，scrollXXX，clientXXX，currentStyle等等
+  
+- 常见引起回流属性和方法：任何会改变元素几何信息(元素的位置和尺寸大小)的操作，都会触发回流
+  - 添加或者删除可见的DOM元素；
+  - 元素尺寸改变——边距、填充、边框、宽度和高度
+  - 内容变化，比如用户在input框中输入文字
+  - 浏览器窗口尺寸改变——resize事件发生时
+  - 计算 offsetWidth,offsetTop,offsetHeight 属性
+  - 设置 style 属性的值
+
+- 常见引起重绘属性和方法
+  !()[https://user-gold-cdn.xitu.io/2019/1/1/16809d8e6482b813?imageView2/0/w/1280/h/960/format/webp/ignore-error/1]
+
+- 如何减少回流、重绘
+  - 使用 transform 替代 top
+  - 使用 visibility 替换 display: none ，因为前者只会引起重绘，后者会引发回流（改变了布局）
+  - 不要把节点的属性值放在一个循环里当成循环里的变量。
+  - 不要使用 table 布局，可能很小的一个小改动会造成整个 table 的重新布局
+  - 动画实现的速度的选择，动画速度越快，回流次数越多，也可以选择使用 requestAnimationFrame
+  - CSS 选择符从右往左匹配查找，避免节点层级过多
+  - 将频繁重绘或者回流的节点设置为图层，图层能够阻止该节点的渲染行为影响别的节点。比如对于 video 标签来说，浏览器会自动将该节点变为图层(还是复合图层)
+  
+- 针对以上内容，对页面渲染的优化 
+JS优化： `<script></script>` 标签加上 defer属性 和 async属性 用于在不阻塞页面文档解析的前提下，控制脚本的下载和执行。
+  - defer属性： 用于开启新的线程下载脚本文件，并使脚本在文档解析完成后执行。
+  - async属性： HTML5新增属性，用于异步下载脚本文件，下载完毕立即解释执行代码。
+CSS优化： `<link>` 标签的 rel属性中的属性值设置为 preload 能够让你在你的HTML页面中可以指明哪些资源是在页面加载完成后即刻需要的,最优的配置加载顺序，提高渲染性能
+
 
