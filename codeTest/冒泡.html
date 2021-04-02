@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            var ulf = document.getElementById('ulf');
+            ulf.onclick=function(e){
+                var target=e.target
+                var currentTarget=e.currentTarget;
+                console.log(target.innerHTML); //点击li，就是li
+                console.log(currentTarget); //ul
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <ul id="ulf">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+</body>
+</html>

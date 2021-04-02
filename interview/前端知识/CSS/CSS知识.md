@@ -178,10 +178,11 @@ BFC: block format context - 块级格式化上下文，每一个盒子当中都�
 
 
 **只要元素满足下面任一条件即可触发 BFC 特性：**
+
 body 根元素,意思应该是根元素所围起来的这个封闭空间是一个BFC。
-浮动元素：float 除 none 以外的值
-绝对定位元素：position (absolute、fixed)
-display 为 inline-block、table-cells、flex
+浮动元素：float 除 none 以外的值    
+绝对定位元素：position (absolute、fixed)   
+display 为 inline-block、table-cells、flex   
 overflow 除了 visible 以外的值 (hidden、auto、scroll)
 
 - 行内格式化上下文 IFC
