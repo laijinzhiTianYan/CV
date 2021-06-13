@@ -223,7 +223,7 @@ overflow 除了 visible 以外的值 (hidden、auto、scroll)
         display:flex;
     }
     .md-main{
-        display: flex;
+      display: flex;
       align-items: center;
       justify-content: center;
     }

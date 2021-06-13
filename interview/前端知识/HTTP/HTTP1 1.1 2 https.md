@@ -27,5 +27,5 @@
   3. 资源内联：HTTP/2 支持 Server-Push，较之内联优势更大效果更好；而且内联的资源不能有效缓存；如果有共用，多页面内联也会造成浪费
 
 
-
+- [HTTPS](https://www.cnblogs.com/fengf233/p/11775415.html)
 
