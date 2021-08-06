@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /*1.第一种方式是利用vw来实现*/
+    /* .square {
+      width: 10vw;
+      height: 10vw;
+      background-color: tomato;
+    } */
+
+    /*2.第二种方式是利用元素的margin/padding百分比是相对父元素width的性质来实现*/
+    /* .square {
+      width: 20%;
+      height: 0;
+      padding-top: 20%;
+      background-color: yellow;
+    } */
+
+    /*3.第三种方式是利用子元素的margin-top的值来实现的*/
+    .square {
+      width: 30%;
+      overflow: hidden;
+      /* 因为父元素没有高度，但是子元素有margin，撑起来了 */
+      background-color: aquamarine;
+    }
+
+    .square::after {
+      content: '';
+      display: block;
+      margin-top: 100%;
+    }
+
+    /* 顺带实现一个三角形 */
+    .triangle {
+      width: 0;
+      height: 0;
+      border-width: 100px;
+      border-style: solid;
+      border-color: transparent transparent transparent red;
+    }
+
+    .box {
+      width: 300px;
+      height: 300px;
+      position: absolute;
+    }
+
+    /* 自适应矩形，水平垂直居中，且宽高比为 2:1 */
+    .autoRect {
+      width: 20vw;
+      height: 10vw;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: violet;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="square"></div>
+  <hr>
+  <div class="triangle"></div>
+  <hr>
+  <div class="box">
+    <div class="autoRect"></div>
+  </div>
+</body>
+
+</html>

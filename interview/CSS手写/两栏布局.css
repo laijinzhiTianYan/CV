@@ -1,0 +1,78 @@
+/*两栏布局一般指的是页面中一共两栏，左边固定，右边自适应的布局，一共有四种实现的方式。*/
+
+/*（1）利用浮动，将左边元素宽度设置为200px，并且设置向左浮动。将右边元素的margin-left设置为200px，宽度设置为auto（默认为auto，撑满整个父元素）。*/
+.container {
+  height: 800px;
+}
+
+.left {
+  float: left;
+  height: 800px;
+  width: 200px;
+  background-color: aliceblue;
+}
+
+.right {
+  margin-left: 210px;
+  width: auto;
+  /*右边宽度自适应*/
+  height: 800px;
+  background-color: aqua;
+}
+
+/*（2）第二种是利用flex布局，将左边元素的放大和缩小比例设置为0，基础大小设置为200px。将右边的元素的放大比例设置为1，缩小比例设置为1，基础大小设置为auto。*/
+.container {
+  display: flex;
+  height: 800px;
+}
+
+.left {
+  flex: 0 0 200px;
+  background-color: aquamarine;
+}
+
+.right {
+  flex: 1 1 auto;
+  background-color: blue;
+}
+
+/*（3）第三种是利用绝对定位布局的方式，将父级元素设置相对定位。左边元素设置为absolute定位，并且宽度设置为
+200px。将右边元素的margin-left的值设置为200px。*/
+.container {
+  position: absolute;
+  height: 800px;
+}
+
+.left {
+  position: absolute;
+  width: 200px;
+  height: 800px;
+  background-color: aqua;
+}
+
+.right {
+  margin-left: 200px;
+  height: 800px;
+  background-color: aquamarine;
+}
+
+/*（4）第四种还是利用绝对定位的方式，将父级元素设置为相对定位。左边元素宽度设置为200px，右边元素设置为绝对定位，左边定位为200px，其余方向定位为0。*/
+.container {
+  position: relative;
+  height: 800px;
+}
+
+.left {
+  width: 200px;
+  height: 800px;
+  background-color: aquamarine;
+}
+
+.right {
+  position: absolute;
+  left: 200px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: yellowgreen;
+}

@@ -1,40 +1,52 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>demo</title>
     <style>
-        body {
-            height: 100vh;
+        .main>div {
+            float: left;
         }
-        body,
-        div {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
+        .left {
+            width: 200px;
+            background: red;
+            margin-left: -100%;
+            height: 300px;
         }
-        div {
+
+        .right {
+            width: 200px;
+            background: blue;
+            margin-left: -200px;
+            height: 200px;
+        }
+
+        .middle {
             width: 100%;
-            height: 0;
-            padding-bottom: 50%;
-            position: relative;
-            background: #ddd;
-        }
-        .text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
+            background: yellow;
+            height: 500px;
         }
     </style>
 </head>
+
 <body>
-    <div>
-        <p class="text">
-            这里是文本信息
-        </p>
+    <div class="main">
+        <div class="middle">
+            <div class="content">
+                中间
+            </div>
+        </div>
+        <div class="left">
+            左边
+        </div>
+        <div class="right">
+            右边
+        </div>
     </div>
 </body>
+
 </html>
